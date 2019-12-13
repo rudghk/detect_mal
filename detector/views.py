@@ -1,8 +1,17 @@
 from django.shortcuts import render
 from .models import Black
-
+from rest_framework import viewsets, permissions
+from .serializers import BlackSerializer
 import json
 import urllib.request
+
+class BlackViewSet(viewsets.ModelViewSet):
+    """
+    API endpoints that allows users to be viewed or edited.
+    """
+    queryset = Black.objects.all()
+    serializer_class = BlackSerializer
+    permission_classes = (permissions.IsAuthenticated, )
 
 # Create your views here.
 
@@ -16,14 +25,18 @@ def black_list(request):
     request = urllib.request.Request(url)
     response = urllib.request.urlopen(request)
     rescode = response.getcode()
+    black_last = Black.objects.last()
     if(rescode == 200):
         response_body = response.read()
         result = json.loads(response_body)
         for element in result:
             phish_id = element['phish_id']
             url = element['url']
-            black = Black()
-            black.black_id = phish_id
-            black.url = url
-            black.save()
+            if(black_last.black_id < phish_id):    
+                black = Black()
+                black.black_id = phish_id
+                black.url = url
+                black.save()
+
+
 
