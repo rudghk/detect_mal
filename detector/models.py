@@ -7,3 +7,8 @@ class Black(models.Model):
 
     def __str__ (self):
         self.black_id
+
+
+class White(models.Model):
+    url = models.CharField(max_length=500)
+    
