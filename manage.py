@@ -5,7 +5,11 @@ import sys
 
 
 def main():
+<<<<<<< HEAD
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'detect_mal.settings')
+=======
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'detect.settings')
+>>>>>>> ec526d6fa3b2119d5451389f0654577e7a6ead34
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

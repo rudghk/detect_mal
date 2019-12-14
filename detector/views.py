@@ -1,4 +1,5 @@
 from django.shortcuts import render
+<<<<<<< HEAD
 from .models import Black
 from rest_framework import viewsets, permissions
 from .serializers import BlackSerializer, WhiteSerializer
@@ -51,6 +52,18 @@ def black_list(request):
 
 def white_list(request):
     catagory=['Adult', 'Arts', 'Business', 'Computers','Games','Reference','Regional','Science','Shopping','Society','Health','Home','Kids_and_Teens','News','Recreation','Sports' ]
+=======
+import requests
+from bs4 import BeautifulSoup
+from .models import White
+
+# Create your views here.
+def home(request):
+    return render(request, 'index.html')
+
+def get_WhiteList(request):
+    catagory=['Adult', 'Arts', 'Business', 'Computers','Games','Reference','Regional','Science','Shopping','Society','Health','Home','Kids_and_Teens','News','Recreation','Sports','World' ]
+>>>>>>> ec526d6fa3b2119d5451389f0654577e7a6ead34
     for kind in catagory:
         req=requests.get('https://www.alexa.com/topsites/category/Top/'+kind)
         html=req.text
@@ -66,5 +79,8 @@ def insert_white(whiteUrl):
     white=White()
     white.url=whiteUrl
     white.save()
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> ec526d6fa3b2119d5451389f0654577e7a6ead34
