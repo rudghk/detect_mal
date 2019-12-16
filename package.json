@@ -1,0 +1,13 @@
+{
+    "mainfest_version" : 2,
+
+    "name" : "detector",
+    "description" : "You can easily find bookmark that you want to go by ",
+    "version" : "1.0",
+    "main" : "app.js",
+    
+    "scripts" : {
+        "start" : "node app.js"
+    }
+
+}
